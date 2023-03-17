@@ -17,6 +17,7 @@ while (big_letter <= 'Z')
 {
 putchar(big_letter);
 big_letter++;
+}
 putchar('\n');
 return (0);
 }
