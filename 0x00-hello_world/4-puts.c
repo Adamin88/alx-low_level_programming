@@ -1,4 +1,4 @@
-#inculde <stdio.h>
+#include <stdio.h>
 /**
  * print a text using puts function
  * the return number should be 0 like this CODE=0
