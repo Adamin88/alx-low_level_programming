@@ -1,8 +1,8 @@
 #include <stdio.h>
 /**
- * main - Entry point
- *
- * Return: Always 0 (Success)
+ * main - main block
+ * Description: Use `putchar` to print lowercase and then uppercase alphabet.
+ * Return: 0
  */
 int main(void)
 {
