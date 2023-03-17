@@ -1,7 +1,7 @@
 #include <stdio.h>
 /**
  * print a text using puts function
- * the return number should be 0 like this CODE=0
+ * the return number should be zero
  */
 int main(void)
 {
