@@ -12,12 +12,12 @@ while (small_letter <= 'z')
 putchar(small_letter);
 small_letter++;
 }
-putchar('\n');
 char big_letter = 'A';
 while (big_letter <= 'Z')
 {
 putchar(big_letter);
 big_letter++;
 }
+putchar('\n');
 return (0);
 }
