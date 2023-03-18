@@ -12,7 +12,7 @@ for (i = 0 ; i < 10 ; i++)
 putchar(i + '0');
 }
 char letter = 'a';
-while (letter <= 'f')
+while (letter < 'g')
 {
 putchar(letter);
 letter++;
