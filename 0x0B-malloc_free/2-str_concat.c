@@ -1,43 +1,41 @@
 #include "main.h"
+#include <stdio.h>
 #include <stdlib.h>
-
 /**
- * str_concat - function that concatenates two strings.
+ * str_concat- concatenate 2 strings.
+ * @s1: string 1.
+ * @s2: string 2, concatenated to 1
  *
- * @s1: first string
- * @s2: second string
- *
- * Return: NULL on failure
+ * Return: pointer to the concatenated string.
  */
-
 char *str_concat(char *s1, char *s2)
 {
-	int len, len1, len2, i, j;
+	int s1Size, s2Size, i;
 	char *conStr;
+
+	i = 0;
+	s1Size = 0;
+	s2Size = 0;
 
 	if (s1 == NULL)
 		s1 = "";
-	if (s2 == NULL)if (s2 == NULL)
+	if (s2 == NULL)
 		s2 = "";
 
-	for (len1 = 0; s1[len1] != '\0'; len1++)
-		;
-	for (len2 = 0; s2[len2] != '\0'; len2++)
-		;
+	while (*(s1 + s1Size))
+		s1Size++;
+	while (*(s2 + s2Size))
+		s2Size++;
+	s2Size++; /*add 1 space to print null*/
 
-	len = len1 + len2;
-	conStr = malloc(sizeof(char) * (len + 1));
-
+	conStr = malloc((s1Size + s2Size) * sizeof(char));
 	if (conStr == NULL)
-	{
-		free(conStr);
 		return (NULL);
-	}
-	for (i = 0; i < len1; i++)
-		conStr[i] = s1[i];
 
-       	j = len2;
-	for (len2 = 0; len2 <= j; i++, len2++)
-		conStr[i] = s2[len2];
+	for (i = 0; i < s1Size; i++)
+		*(conStr + i) = *(s1 + i);
+	for (i = s1Size; i < (s1Size + s2Size); i++)
+		*(conStr + i) = *(s2 + i - s1Size);
+
 	return (conStr);
-       
+}
