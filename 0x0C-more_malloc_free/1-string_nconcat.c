@@ -1,46 +1,41 @@
-#include <stdlib.h>
 #include "main.h"
-
+#include <stdlib.h>
 /**
- * string_nconcat - concatenates n bytes of a string to another string
- * @s1: string to append to
- * @s2: string to concatenate from
- * @n: number of bytes from s2 to concatenate to s1
- *
- * Return: pointer to the resulting string
+ *string_nconcat - a function that concatenates two strings
+ *@s1: Holds the first part of the string
+ *@s2: Holds the second part of the string
+ *@n: A variable that contains a value that
+ *concatenates the number of characters to the array.
+ *Return: The concatenated string
  */
-
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-	char *s;
-	unsigned int i = 0, j = 0, len1 = 0, len2 = 0;
+	unsigned int i, l, total_length, j;
+	char *array;
 
-	while (s1 && s1[len1])
-		len1++;
-	while (s2 && s2[len2])
-		len2++;
-
-	if (n < len2)
-		s = malloc(sizeof(char) * (len1 + n + 1));
-	else
-		s = malloc(sizeof(char) * (len1 + len2 + 1));
-
-	if (!s)
+	if (s1 == NULL)
+		s1 = "";
+	if (s2 == NULL)
+		s2 = "";
+	for (i = 0; s1[i] != '\0'; i++)
+		;
+	total_length = ((i + n) * sizeof(char));
+	array = malloc(total_length + 1);
+	if (array == NULL)
 		return (NULL);
-
-while (i < len1)
-{
-s[i] = s1[i];
-i++;
-}
-
-while (n < len2 && i < (len1 + n))
-	s[i++] = s2[j++];
-
-	while (n >= len2 && i < (len1 + len2))
-	s[i++] = s2[j++];
-
-	s[i] = '\0';
-
-	return (s);
+	l = 0;
+	while (l < total_length && s1[l] != '\0')
+	{
+		array[l] = s1[l];
+		l++;
+	}
+	j = 0;
+	while (l < total_length && s2[j] != '\0')
+	{
+		array[l] = s2[j];
+		l++;
+		j++;
+	}
+	array[l] = '\0';
+	return (array);
 }
