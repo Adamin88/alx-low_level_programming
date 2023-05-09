@@ -2,34 +2,31 @@
 #include <stdio.h>
 
 /**
- * print_binary - print binary representation of a number
- * @n: decimal number to print as binary
+ * print_binary - Print binary representation of a number
+ * @n: Decimal number to print as binary
+ *
+ * Return: Nothing
  */
 void print_binary(unsigned long int n)
 {
+	unsigned long int temp;
+	int shifts;
+
 	if (n == 0)
 	{
 		printf("0");
 		return;
 	}
 
-	unsigned long int mask = ~0UL >> 1;
+	for (temp = n, shifts = 0; (temp >>= 1) > 0; shifts++)
+		;
 
-	while (mask && !(mask & n))
+	for (; shifts >= 0; shifts--)
 	{
-		mask >>= 1;
-	}
-
-	for (; mask; mask >>= 1)
-	{
-		if (mask & n)
-		{
+		if ((n >> shifts) & 1)
 			printf("1");
-		}
 		else
-		{
 			printf("0");
-		}
 	}
 }
 
