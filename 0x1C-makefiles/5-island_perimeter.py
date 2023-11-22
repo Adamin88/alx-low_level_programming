@@ -1,41 +1,27 @@
 #!/usr/bin/python3
+"""A module for working with grid structures.
+"""
 
-def island_perimeter(grid):
-    """
-    Calculates the perimeter of an island described in a grid.
+
+def island_perimeter(grid: list) -> int:
+    """Computes the perimeter of the island described in the grid.
 
     Args:
-    grid (list): A list of list of integers representing the grid.
+        grid (list of list of integers): For each integer, 0 represents
+        water and 1 represents land.
 
     Returns:
-    int: The perimeter of the island.
-
-    Example:
-    >>> island_perimeter([[0, 1, 0, 0],
-                          [1, 1, 1, 0],
-                          [0, 1, 0, 0],
-                          [1, 1, 0, 0]])
-    16
+        int: The perimeter of the island.
     """
-
-    perimeter = 0
     rows = len(grid)
-    cols = len(grid[0])
-
+    perimeter = 0
     for i in range(rows):
+        cols = len(grid[i])
         for j in range(cols):
-            if grid[i][j] == 1:
-                # Check left
-                if j == 0 or grid[i][j - 1] == 0:
-                    perimeter += 1
-                # Check right
-                if j == cols - 1 or grid[i][j + 1] == 0:
-                    perimeter += 1
-                # Check top
-                if i == 0 or grid[i - 1][j] == 0:
-                    perimeter += 1
-                # Check bottom
-                if i == rows - 1 or grid[i + 1][j] == 0:
-                    perimeter += 1
-
+            if (grid[i][j] == 1):
+                left = 1 if j == 0 or grid[i][j - 1] == 0 else 0
+                top = 1 if i == 0 or grid[i - 1][j] == 0 else 0
+                right = 1 if j == cols - 1 or grid[i][j + 1] == 0 else 0
+                bottom = 1 if i == rows - 1 or grid[i + 1][j] == 0 else 0
+                perimeter += (top + right + bottom + left)
     return perimeter
